@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {FormControl, Validators} from '@angular/forms';
 import { Emailmessage } from './emailmessage';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact',
@@ -38,9 +40,10 @@ ResetEmail() {
 
     console.log(this.emailmessage);
     return this.http.post('https://gitos.azurewebsites.net/api/email', this.emailmessage)
-    .subscribe(Response => {
-      console.log(Response);
-    });
+    .subscribe( res => {
+      console.log(res);
+  }
+);
   }
 
 }
