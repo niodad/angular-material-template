@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
-
+import {HttpModule} from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -15,12 +14,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+
   ],
   imports: [
   BrowserModule,
@@ -31,7 +32,7 @@ import { ContactComponent } from './contact/contact.component';
   ReactiveFormsModule,
   LayoutModule,
   AppRoutingModule,
-  HttpClientModule
+  HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

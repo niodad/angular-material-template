@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import {FormControl, Validators} from '@angular/forms';
-import { Emailmessage } from './emailmessage';
+import { Emailmessage } from '../Models/emailmessage';
+import {MailService} from '../services/mail.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-contact',
@@ -24,7 +25,7 @@ export class ContactComponent implements OnInit  {
     Validators.email,
   ]);
 
-  constructor(private http: HttpClient) { }
+  constructor(private mailservice: MailService) { }
 
   ngOnInit() {
   }
@@ -39,7 +40,7 @@ ResetEmail() {
   SendMail() {
 
     console.log(this.emailmessage);
-    return this.http.post('https://gitos.azurewebsites.net/api/email', this.emailmessage)
+    return this.mailservice.SendMail(this.emailmessage)
     .subscribe( res => {
       console.log(res);
   }
